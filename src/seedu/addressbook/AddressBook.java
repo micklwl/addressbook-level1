@@ -14,14 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /*
  * NOTE : =============================================================
@@ -853,7 +846,15 @@ public class AddressBook {
      * Sorts all persons in the address book
      */
     private static void sortAddressBook() {
+        Collections.sort(ALL_PERSONS, new Comparator<String[]>() {
+            @Override
+            public int compare(String[] name1, String[] name2) {
+                String s1 = getNameFromPerson(name1);
+                String s2 = getNameFromPerson(name2);
+                return s1.compareToIgnoreCase(s2);
+            }
 
+        });
     }
 
 
