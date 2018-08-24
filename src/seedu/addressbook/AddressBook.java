@@ -587,7 +587,7 @@ public class AddressBook {
     }
 
     /**
-     * Sorts all persons in the address book.
+     * Sorts all persons in the address book and display end result.
      *
      * @return feedback display message for the operation result
      */
@@ -597,6 +597,9 @@ public class AddressBook {
         return MESSAGE_LIST_SORTED;
     }
 
+    /**
+     * Displays all persons in the address book to the user; in sorted order.
+     */
     private static void displaySortList(){
         ArrayList<String[]> toBeDisplayed = getAllPersonsInAddressBook();
         showToUser(toBeDisplayed);
@@ -639,6 +642,9 @@ public class AddressBook {
             System.out.println(LINE_PREFIX + m);
         }
     }
+
+    // use String[] as parameter instead
+    // when calling need to make new String[]
 
     /**
      * Shows the list of persons to the user.
