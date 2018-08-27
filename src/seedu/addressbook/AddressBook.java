@@ -84,7 +84,7 @@ public class AddressBook {
     private static final String MESSAGE_WELCOME = "Welcome to your Address Book!";
     private static final String MESSAGE_USING_DEFAULT_FILE = "Using default storage file : " + DEFAULT_STORAGE_FILEPATH;
     private static final String MESSAGE_LIST_SORTED = "Address book has been sorted!";
-
+    private static final String MESSAGE_EMPTY_SORT_LIST = "Address book is empty and no sort was done!";
     // These are the prefix strings to define the data type of a command parameter
     private static final String PERSON_DATA_PREFIX_PHONE = "p/";
     private static final String PERSON_DATA_PREFIX_EMAIL = "e/";
@@ -591,10 +591,16 @@ public class AddressBook {
      *
      * @return feedback display message for the operation result
      */
-    private static String executeSortList(){
-        sortAddressBook();
-        displaySortList();
-        return MESSAGE_LIST_SORTED;
+    private static String executeSortList() {
+        if (ALL_PERSONS.isEmpty()) {
+            displaySortList();
+            return MESSAGE_EMPTY_SORT_LIST;
+        }
+        else{
+            sortAddressBook();
+            displaySortList();
+            return MESSAGE_LIST_SORTED;
+        }
     }
 
     /**
